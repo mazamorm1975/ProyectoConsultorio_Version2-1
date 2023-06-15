@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.consulta.model.Usuario;
 import com.consulta.service.IUsuarioService;
-import com.consulta.service.implementation.UsuarioServiceImpl;
+
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/usuarios")
@@ -25,7 +27,7 @@ public class UsuarioController {
 
 	
 	@PostMapping
-	public Usuario registrar(@RequestBody Usuario usuario) throws Exception {
+	public Usuario registrar(@Valid @RequestBody Usuario usuario) throws Exception {
 		
 		return usuarioService.registrar(usuario);
 	}
@@ -60,6 +62,7 @@ public class UsuarioController {
 			Usuario user_2 = usuarioService.listarPorIdUsuario(id);
 			return user_2;
 		}
+		
 		return null;
 	}
 

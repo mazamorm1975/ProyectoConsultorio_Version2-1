@@ -8,8 +8,10 @@ import org.springframework.core.SpringVersion;
 public class ProyectoConsultorioVersion21Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProyectoConsultorioVersion21Application.class, args);
+		SpringApplication.run(ProyectoConsultorioVersion21Application.class);
 		System.out.println("Versión De Springframework"+SpringVersion.getVersion());
+		
+		 
 	}
 
 }
