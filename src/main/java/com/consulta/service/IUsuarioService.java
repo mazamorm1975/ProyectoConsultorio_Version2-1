@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.consulta.dto.UsuarioDTO;
 import com.consulta.model.Usuario;
 
 @Service
@@ -14,4 +15,5 @@ public interface IUsuarioService {
 	void eliminar(Integer id) throws Exception;
 	Usuario registrar(Usuario u) throws Exception;
 	Usuario listarPorIdUsuario(Integer id) throws Exception;
+	UsuarioDTO listarPorIdUsuarioDTO(Integer id) throws Exception;
 }

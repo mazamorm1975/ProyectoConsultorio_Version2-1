@@ -1,11 +1,12 @@
 package com.consulta.service.implementation;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.consulta.dto.UsuarioDTO;
 import com.consulta.model.Usuario;
 import com.consulta.repositorio.IUsuarioRepo;
 import com.consulta.service.IUsuarioService;
@@ -15,6 +16,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Autowired
 	private IUsuarioRepo usuarioRepo;
+	
+	@Autowired
+	private ModelMapper mapper;
 	
 	@Override
 	public Usuario modificar(Usuario u) throws Exception {
@@ -29,23 +33,32 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Override
 	public Usuario registrar(Usuario u) throws Exception {
-		// TODO Auto-generated method stub
 		return usuarioRepo.save(u);
 	}
 
-	
 	@Override
 	public List<Usuario> listar() throws Exception {
-		// TODO Auto-generated method stub
 		return usuarioRepo.findAll();
 	}
 
 	@Override
-	public Usuario listarPorIdUsuario(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		Optional<Usuario> op = usuarioRepo.findById(id);
-		return op.isPresent() ? op.get(): new Usuario();
+	public UsuarioDTO listarPorIdUsuarioDTO(Integer id) throws Exception {
+		
+		Usuario usuario = usuarioRepo.findById(id).get();
+		UsuarioDTO usuariodto = mapper.map(usuario, UsuarioDTO.class);
+		
+		return usuariodto;
 	}
+
+	@Override
+	public Usuario listarPorIdUsuario(Integer id) throws Exception {
+
+		Usuario usuario = usuarioRepo.findById(id).get();
+				
+		return usuario;
+	}
+
+	
 
 	
 	
