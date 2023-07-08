@@ -1,31 +1,52 @@
 package com.consulta.model;
 
-import java.util.Objects;
+import java.util.List;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="rol")
+@Table(name = "rol")
 public class Rol {
 
 	@Id
 	private Integer idRol;
-	
-	@Column(name="tipo")
+
+	@Column(name = "tipo")
+	@JsonIgnore
 	private String tipo;
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
+	@JsonIgnore
 	private String descripcion;
-
-		
+	
+	/*
+	@OneToMany
+	@Cascade(CascadeType.ALL)
+	private List<Usuario> usuario;*/
+	
+	
 	public Rol() {
 		super();
 	}
 
-	
+	/*
+	public List<Usuario> getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(List<Usuario> usuario) {
+		this.usuario = usuario;
+	}*/
+
 	public Rol(Integer idRol, String tipo, String descripcion) {
 		super();
 		this.idRol = idRol;
@@ -33,32 +54,28 @@ public class Rol {
 		this.descripcion = descripcion;
 	}
 
-	
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(idRol);
+	public Integer getIdRol() {
+		return idRol;
 	}
 
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Rol other = (Rol) obj;
-		return Objects.equals(idRol, other.idRol);
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
 	}
 
+	public String getTipo() {
+		return tipo;
+	}
 
-	@Override
-	public String toString() {
-		return "Rol [idRol=" + idRol + ", tipo=" + tipo + ", descripcion=" + descripcion + "]";
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
-	
-
 }

@@ -2,20 +2,21 @@ package com.consulta.security;
 
 import java.io.IOException;
 
-import org.springframework.security.web.AuthenticationEntryPoint;
+//import org.springframework.security.web.AuthenticationEntryPoint;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.AuthenticationEntryPoint;
+//import org.springframework.security.core.AuthenticationException;
+//import org.springframework.security.web.AuthenticationEntryPoint;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/*
 public class AuthException implements AuthenticationEntryPoint{
 
 	@Override
@@ -38,4 +39,4 @@ public class AuthException implements AuthenticationEntryPoint{
 	}
 
 	
-}
+}*/

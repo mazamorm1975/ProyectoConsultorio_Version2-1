@@ -4,12 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import org.hibernate.annotations.Cascade;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +19,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -26,17 +26,16 @@ public class Usuario {
 	// Cabecera de variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUsuario;
+	private Integer idUsuario;
 
 	@Column(name = "username", nullable = false, length = 70)
 	private String username;
-	
+
 	@Column(name = "password", nullable = false, length = 70)
 	private String password;
 
-
-	@Column(name = "horaFechaEvento", nullable = true)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Column(name = "horaFechaEvento", nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate horaFechaEvento;
 
 	@Column(name = "lugarEvento", nullable = false, length = 45)
@@ -49,48 +48,21 @@ public class Usuario {
 	private String folioSeguimiento;
 
 	@ManyToOne
-	@JoinColumn(name="id_rol", nullable = false, foreignKey = @ForeignKey(name="fk_rol_usuario"))
-	private Rol id_rol;
-	
-	@OneToMany(mappedBy="usuario", cascade = {CascadeType.ALL}, orphanRemoval = true)
-	private List<RolesUsuario> rolesList;
-		
+	@JoinColumn(name = "idRol", nullable = false)
+	private Rol idRol;
+
 	// Constructor con sobrecarga
 	public Usuario() {
 	}
-	
-	public Usuario(int idUsuario, String username, String password, LocalDate horaFechaEvento, String lugarEvento,
-			String statusSeguimiento, String folioSeguimiento) {
-		super();
-		this.idUsuario = idUsuario;
-		this.username = username;
-		this.password = password;
-		this.horaFechaEvento = horaFechaEvento;
-		this.lugarEvento = lugarEvento;
-		this.statusSeguimiento = statusSeguimiento;
-		this.folioSeguimiento = folioSeguimiento;
-	}
 
-
-	// Getters && Setters
-	public String getFolioSeguimiento() {
-		return folioSeguimiento;
-	}
-
-	public void setFolioSeguimiento(String folioSeguimiento) {
-		this.folioSeguimiento = folioSeguimiento;
-	}
-
-	public int getIdUsuario() {
+	public Integer getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
+	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
-	
-	
 	public String getUsername() {
 		return username;
 	}
@@ -131,8 +103,22 @@ public class Usuario {
 		this.statusSeguimiento = statusSeguimiento;
 	}
 
-	
-	
+	public String getFolioSeguimiento() {
+		return folioSeguimiento;
+	}
+
+	public void setFolioSeguimiento(String folioSeguimiento) {
+		this.folioSeguimiento = folioSeguimiento;
+	}
+
+	public Rol getIdRol() {
+		return idRol;
+	}
+
+	public void setIdRol(Rol idRol) {
+		this.idRol = idRol;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idUsuario);
@@ -157,6 +143,4 @@ public class Usuario {
 				+ statusSeguimiento + ", folioSeguimiento=" + folioSeguimiento + "]";
 	}
 
-	
-	
 }
