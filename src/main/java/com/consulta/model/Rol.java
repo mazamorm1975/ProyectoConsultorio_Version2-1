@@ -47,7 +47,7 @@ public class Rol {
 		this.usuario = usuario;
 	}*/
 
-	//Constructor con sobrecarga de parametros
+	//Constructor con sobrecarga de parametros en la clase Rol
 	public Rol(Integer idRol, String tipo, String descripcion) {
 		super();
 		this.idRol = idRol;
