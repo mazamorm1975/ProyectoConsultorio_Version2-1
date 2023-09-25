@@ -47,6 +47,7 @@ public class Rol {
 		this.usuario = usuario;
 	}*/
 
+	//Este es un test para subir cambios
 	public Rol(Integer idRol, String tipo, String descripcion) {
 		super();
 		this.idRol = idRol;

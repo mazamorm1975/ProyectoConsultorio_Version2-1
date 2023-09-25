@@ -23,7 +23,7 @@ import jakarta.persistence.Table;
 @Table(name = "usuario")
 public class Usuario {
 
-	// Cabecera de variables
+	// Cabecera de variables globales
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idUsuario;
