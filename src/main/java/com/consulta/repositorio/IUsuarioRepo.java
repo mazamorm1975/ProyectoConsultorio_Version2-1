@@ -8,6 +8,7 @@ import com.consulta.model.Usuario;
 
 public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 	
+	//Metodo para encontrar a un usuario por userName
   	//public User findByUsername(String username);
   	
   	
