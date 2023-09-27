@@ -33,7 +33,7 @@ public class Rol {
 	@Cascade(CascadeType.ALL)
 	private List<Usuario> usuario;*/
 	
-	
+	//Constructor Default
 	public Rol() {
 		super();
 	}
@@ -55,6 +55,8 @@ public class Rol {
 		this.descripcion = descripcion;
 	}
 
+	
+	//metodos setter && getters
 	public Integer getIdRol() {
 		return idRol;
 	}
