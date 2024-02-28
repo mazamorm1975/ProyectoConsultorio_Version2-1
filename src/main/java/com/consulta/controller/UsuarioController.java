@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.consulta.dto.UsuarioDTO;
 import com.consulta.model.Usuario;
 import com.consulta.service.IUsuarioService;
+import com.consulta.service.implementation.UsuarioServiceImpl;
 
 import jakarta.validation.Valid;
 
@@ -28,6 +29,9 @@ public class UsuarioController {
 
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	@Autowired
+	private UsuarioServiceImpl usuarioServiceImpl;
 
 	@Autowired
 	private ModelMapper mapper;
@@ -46,7 +50,7 @@ public class UsuarioController {
 	@PostMapping("/ingresarUsuario")
 	public ResponseEntity<Usuario> registrar(@Valid @RequestBody Usuario usuario) throws Exception{
 		
-		Usuario user2 = usuarioService.registrar(usuario);
+		Usuario user2 = usuarioServiceImpl.registrar(usuario);
 		
 		return new ResponseEntity<Usuario>(user2, HttpStatus.CREATED);
 	}
@@ -77,7 +81,7 @@ public class UsuarioController {
 	@GetMapping("/listarPorId/{id}")
 	public ResponseEntity<UsuarioDTO> listarPorId(@PathVariable("id") Integer id) throws Exception {
 	
-		UsuarioDTO user_2 = usuarioService.listarPorIdUsuarioDTO(id);
+		UsuarioDTO user_2 = usuarioServiceImpl.listarPorIdUsuarioDTO(id);
 		
 		return new ResponseEntity(user_2, HttpStatus.ACCEPTED);
 	}
