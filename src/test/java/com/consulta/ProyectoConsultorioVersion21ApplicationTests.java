@@ -24,22 +24,9 @@ import com.consulta.service.implementation.UsuarioServiceImpl;
 class ProyectoConsultorioVersion21ApplicationTests {
 
 	@Test
-	void metodoRegistrar() throws Exception {
+	void contexTest() throws Exception {
 						
 		
-		UsuarioServiceImpl userImpl = mock(UsuarioServiceImpl.class);
-		
-		//Se simula el cuerpo del JSON de tipo Usuario
-		Usuario usuario = new Usuario();
-		usuario.setUsername("Mario");
-		usuario.setFolioSeguimiento("MX-14577");
-		usuario.setHoraFechaEvento(LocalDate.now());
-		usuario.setLugarEvento("Toluca");
-		usuario.setPassword("Cu213lona1212");
-		usuario.setStatusSeguimiento("No Activo");
-		usuario.setIdRol(new Rol(1, "Admin", "SuperUser"));
-			
-		userImpl.registrar(usuario);	
 		
 		
 	}
